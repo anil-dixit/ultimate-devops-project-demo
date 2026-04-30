@@ -6,6 +6,7 @@ on:
     pull_request:
         branches:
         - main
+        - dev
 env:
   ECR_REPOSITORY: product-catalog
 jobs:

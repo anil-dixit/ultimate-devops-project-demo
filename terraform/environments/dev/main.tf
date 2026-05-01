@@ -1,3 +1,4 @@
+# Terraform configuration for the Dev environment of the Ultimate DevOps Project Demo
 terraform {
   required_providers {
     aws = {

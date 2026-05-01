@@ -1,0 +1,18 @@
+name: "Destroy Dev Infra"
+on: workflow_dispatch # This creates the "Run Workflow" button
+
+jobs:
+  destroy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./terraform/environments/dev
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ADMIN_ROLE_ARN }}
+          aws-region: us-west-2
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform init
+      - run: terraform destroy -auto-approve
